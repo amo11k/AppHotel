@@ -6,7 +6,6 @@ import java.util.TreeMap;
 
 public class Hotel extends Room {
 	private final static int NUM_ROOMS = 40;
-	private Room rom;
 	private int count = 1;
 	private static Room[] listRoom = new Room[NUM_ROOMS];
 	

@@ -45,7 +45,7 @@ public class Catalogo extends JFrame {
 		texto.setEditable(false);
 		texto.setFont(new Font("Caviar Dreams", Font.BOLD | Font.ITALIC, 24));
 		texto.setText("Habitaci\u00F3n Standart: 5.15\u20AC/h\r\nHabitaci\u00F3n Lujo: 10.30\u20AC/h\r\nHabitaci\u00F3n LujoShh: 15.45\u20AC/h");
-		texto.setBounds(360, 11, 391, 99);
+		texto.setBounds(337, 11, 414, 100);
 		contentPane.add(texto);
 		
 		foto = new JLabel("FOTO");

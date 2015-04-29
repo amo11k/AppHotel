@@ -31,7 +31,6 @@ public class Dialog extends JDialog {
 	public Dialog() {
 		setFont(new Font("Dialog", Font.PLAIN, 10));
 		setTitle("Reserva confirmada");
-		setType(Type.POPUP);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Dialog.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setBounds(100, 100, 200, 200);
 		getContentPane().setLayout(new BorderLayout());

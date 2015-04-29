@@ -26,6 +26,7 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JSpinField;
 import java.awt.Toolkit;
+import javax.swing.JCheckBox;
 
 public class Reserva extends JFrame {
 
@@ -46,6 +47,7 @@ public class Reserva extends JFrame {
 	DecimalFormat formatPrice = new DecimalFormat("#.##");
 	private final static int NUM_ROOMS = 40;
 	private Hotel hotel;
+	private JCheckBox fumadorCheck;
 
 	/**
 	 * Create the frame.
@@ -56,7 +58,7 @@ public class Reserva extends JFrame {
 				Reserva.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Realizar reserva");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 406);
 		pane = new JPanel();
 		pane.setBackground(new Color(233, 150, 122));
 		pane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -105,7 +107,7 @@ public class Reserva extends JFrame {
 				}
 			}
 		});
-		btnConfirm.setBounds(84, 228, 107, 23);
+		btnConfirm.setBounds(39, 325, 107, 23);
 		pane.add(btnConfirm);
 
 		JButton btnCancel = new JButton("Cancelar");
@@ -114,7 +116,7 @@ public class Reserva extends JFrame {
 				dispose();
 			}
 		});
-		btnCancel.setBounds(283, 228, 107, 23);
+		btnCancel.setBounds(283, 324, 107, 23);
 		pane.add(btnCancel);
 
 		JLabel horaInit = new JLabel("Hora de reserva:");
@@ -137,6 +139,11 @@ public class Reserva extends JFrame {
 		JLabel horaFIn = new JLabel("Hora de fin:");
 		horaFIn.setBounds(39, 187, 138, 15);
 		pane.add(horaFIn);
+		
+		fumadorCheck = new JCheckBox("Fumador");
+		fumadorCheck.setBackground(new Color(255, 153, 102));
+		fumadorCheck.setBounds(261, 232, 129, 23);
+		pane.add(fumadorCheck);
 	}
 
 	public void rent() throws IOException {
@@ -158,7 +165,6 @@ public class Reserva extends JFrame {
 	private Room asignarRoom(Hotel h) {
 		Room r = null;
 		int type = comboBox.getSelectedIndex();
-		System.out.println(type);
 		for (int i = 0; i < NUM_ROOMS; i++) {
 			r = Hotel.getRoomAt(i);
 			if ((r.getTypeInt() == type) && (r.getDisponible() == true)){
@@ -216,5 +222,4 @@ public class Reserva extends JFrame {
 		}
 		return precio;
 	}
-
 }

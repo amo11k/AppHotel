@@ -53,7 +53,6 @@ public class AppHotel extends JFrame {
 	public AppHotel() {
 		Reserva r = new Reserva();
 		Hotel h = new Hotel();
-		setType(Type.POPUP);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				AppHotel.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setForeground(Color.RED);
@@ -133,7 +132,7 @@ public class AppHotel extends JFrame {
 						.getResource("/com/amo11k/hotel/img/16-hotel-las-palmas-sercotel-cristina-las-palmas-habitacion.jpg")));
 		ttlPane.setFont(new Font("Andalus", Font.ITALIC, 18));
 		ttlPane.setHorizontalAlignment(SwingConstants.CENTER);
-		ttlPane.setBounds(0, 0, 786, 560);
+		ttlPane.setBounds(0, -36, 854, 633);
 		pane.add(ttlPane);
 	}
 }
