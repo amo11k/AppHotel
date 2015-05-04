@@ -24,7 +24,7 @@ import java.awt.Toolkit;
 public class AppHotel extends JFrame {
 
 	private JPanel pane;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -51,8 +51,6 @@ public class AppHotel extends JFrame {
 	 * Create the frame.
 	 */
 	public AppHotel() {
-		Reserva r = new Reserva();
-		Hotel h = new Hotel();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				AppHotel.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setForeground(Color.RED);

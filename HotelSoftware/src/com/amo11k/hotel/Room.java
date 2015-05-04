@@ -19,6 +19,8 @@ public class Room {
 		numRoom = num;
 		typeRoom = type;
 		if (numRoom % 2 == 0)
+			smokeRoom = true;
+		else
 			smokeRoom = false;
 	}
 
@@ -71,10 +73,10 @@ public class Room {
 	}
 
 	public String toString() {
-		return "Nº" + numRoom + ";T" + getType(getTypeInt()) + ";" + getSmoke();
+		return "Nº" + numRoom + ";T" + getType(getTypeInt()) + ";F:" + getSmoke() +";D:"+getDisponible();
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Room hab = new Room(1, 2);
 		System.out.println(hab.toString() + hab.getDisponible());
 
@@ -82,5 +84,5 @@ public class Room {
 
 			System.out.println();
 		}
-	}
+	}*/
 }

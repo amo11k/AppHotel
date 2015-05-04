@@ -1,14 +1,13 @@
 package com.amo11k.hotel;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -16,17 +15,17 @@ import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JSpinField;
-import java.awt.Toolkit;
-import javax.swing.JCheckBox;
 
 public class Reserva extends JFrame {
 
@@ -46,7 +45,8 @@ public class Reserva extends JFrame {
 	public final double TARIFA = 5.15;
 	DecimalFormat formatPrice = new DecimalFormat("#.##");
 	private final static int NUM_ROOMS = 40;
-	private Hotel hotel;
+	public static Hotel hotel;
+	private Room room;
 	private JCheckBox fumadorCheck;
 
 	/**
@@ -96,7 +96,9 @@ public class Reserva extends JFrame {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					rent();
+					room = asignarRoom(hotel);
+					precio = getPrice();
+					rent(room,precio);
 					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -146,16 +148,13 @@ public class Reserva extends JFrame {
 		pane.add(fumadorCheck);
 	}
 
-	public void rent() throws IOException {
+	public void rent(Room room, double precio) throws IOException {
 		Date hoy = new Date();
 		date = dateChooser.getDate();
 		if (date.before(hoy)) {
-			Error error = new Error();
-			error.setVisible(true);
-			error.setLocationRelativeTo(null);
+			JOptionPane.showMessageDialog(null, "La fecha introducida no es correcta");
 		} else {
-			precio = getPrice();
-			write();
+			write(room,precio);
 			Dialog confim = new Dialog();
 			confim.setVisible(true);
 			confim.setLocationRelativeTo(null);
@@ -164,31 +163,25 @@ public class Reserva extends JFrame {
 
 	private Room asignarRoom(Hotel h) {
 		Room r = null;
+		Room asig = null;
 		int type = comboBox.getSelectedIndex();
-		for (int i = 0; i < NUM_ROOMS; i++) {
-			r = Hotel.getRoomAt(i);
-			if ((r.getTypeInt() == type) && (r.getDisponible() == true)){
-				r.setDisponible(false);
-				break;
-			}			
-		}
-		return r;
+		boolean fuma = fumadorCheck.isSelected();
+		while (asig==null){
+			for (int i = 0; i < NUM_ROOMS; i++) {
+				r = Hotel.getRoomAt(i);
+				if ((r.getTypeInt() == type) && (r.getDisponible() == true) && (r.getSmokeBoolean() == fuma)){
+					asig = r;
+					asig.setDisponible(false);
+				}
+			}
+		}if (asig == null)
+			JOptionPane.showMessageDialog(null, "No quedan habitaciones libres con estos criterios");
+			
+		return asig;
 	}
 
-	/*
-	 * private Room asignarRoom() { Room r = new Room(); int type =
-	 * comboBox.getSelectedIndex(); for (int i = 0; i<NUM_ROOMS;i++){ if
-	 * (Hotel.getRoomAt(i).getTypeInt() == type &&
-	 * !Hotel.getRoomAt(i).getSmokeBoolean()){ if
-	 * (Hotel.getRoomAt(i).getDisponible() != false){ r = Hotel.getRoomAt(i);
-	 * Hotel.getRoomAt(i).setDisponible(false); } } } return r;
-	 * 
-	 * }
-	 */
-
-	public void write() {
+	public void write(Room r, double precio) {
 		try {
-			Room r = asignarRoom(hotel);
 			out = new FileWriter(hist, true);
 
 			out.write(r.toString() + ";");

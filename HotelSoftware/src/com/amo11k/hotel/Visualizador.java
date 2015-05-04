@@ -24,7 +24,8 @@ public class Visualizador extends JFrame {
 
 	private JPanel pane;
 	private JTextArea txtVisu;
-	 
+	public JButton btnLeer;
+	private StringBuilder builder;
 
 	/**
 	 * Create the frame.
@@ -45,7 +46,7 @@ public class Visualizador extends JFrame {
 		txtVisu.setBounds(29, 11, 284, 240);
 		pane.add(txtVisu);
 		
-		JButton btnLeer = new JButton("LEER");
+		btnLeer = new JButton("LEER");
 		btnLeer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BufferedReader in = null;
@@ -56,7 +57,7 @@ public class Visualizador extends JFrame {
 					e2.printStackTrace();
 				}
 				String s;
-				StringBuilder builder = new StringBuilder();
+				builder = new StringBuilder();
 				try {
 					in = new BufferedReader(new FileReader("Historial Reservas"));
 					while ((s = in.readLine()) != null) {
@@ -92,5 +93,19 @@ public class Visualizador extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(txtVisu);
 		scrollPane.setBounds(29, 11, 589, 482);
 		pane.add(scrollPane);
+		
+		JButton btnVerHotel = new JButton("Ver Hotel");
+		btnVerHotel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 
+				 builder = new StringBuilder();
+				 for (int i = 0; i<Hotel.NUM_ROOMS;i++){
+					 builder.append(Reserva.hotel.getRoomAt(i).toString()+"\n");
+				 }
+				 txtVisu.setText(builder.toString());
+			}
+		});
+		btnVerHotel.setBounds(630, 456, 106, 23);
+		pane.add(btnVerHotel);
 	}
 }
