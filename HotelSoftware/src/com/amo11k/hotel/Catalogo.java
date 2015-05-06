@@ -69,8 +69,9 @@ public class Catalogo extends JFrame {
 				int posX = texto.getLocation().x;
 				texto.setLocation(posX, posY+1);
 				if (posY>600){
-					dispose();
+					
 					timer.stop();
+					dispose();
 				}
 				
 			}

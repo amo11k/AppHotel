@@ -40,9 +40,6 @@ public class AppHotel extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		/*
-		 * Habitacion hab = new Habitacion(); hab.printRooms();
-		 */
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,13 +62,13 @@ public class AppHotel extends JFrame {
 	 * @throws ClassNotFoundException
 	 */
 	public AppHotel() {
-		if ("fichero.bin" != null) {
+		/*if ("fichero.bin" != null) {
 			try {
 				hotel = readHotel();
 			} catch (ClassNotFoundException | IOException e1) {
 				JOptionPane.showMessageDialog(null, "Error al cargar");
 			}
-		}
+		}*/
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				AppHotel.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setForeground(Color.RED);
@@ -157,8 +154,6 @@ public class AppHotel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					hotel = readHotel();
-					JOptionPane
-							.showMessageDialog(null, "Cargado correctamente");
 				} catch (ClassNotFoundException | IOException e1) {
 					JOptionPane.showMessageDialog(null, "Error al cargar");
 				}
@@ -171,8 +166,7 @@ public class AppHotel extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					writeHotel(hotel);
-					JOptionPane.showMessageDialog(null,
-							"Guardado correctamente");
+					JOptionPane.showMessageDialog(null, "Hotel guardado correctamente");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(null, "Error al guardar");
@@ -200,6 +194,10 @@ public class AppHotel extends JFrame {
 	}
 
 	protected void writeHotel(Hotel hotel) throws IOException {
+		for (int i = 0; i < 40; i++) {
+
+			System.out.println(hotel.getRoomAt(i));
+		}
 		fos = new FileOutputStream("hotel.bin");
 		out = new ObjectOutputStream(fos);
 		// Escribir el objeto en el fichero
@@ -210,7 +208,12 @@ public class AppHotel extends JFrame {
 		fis = new FileInputStream("hotel.bin");
 		in = new ObjectInputStream(fis);
 		// Leer el objeto en el fichero
-		hotel = (Hotel) in.readObject();
+		hotel=(Hotel) in.readObject();
+		JOptionPane.showMessageDialog(null, "Hotel cargado correctamente");
+		for (int i = 0; i < 40; i++) {
+
+			System.out.println(hotel.getRoomAt(i));
+		}
 		return hotel;
 	}
 }

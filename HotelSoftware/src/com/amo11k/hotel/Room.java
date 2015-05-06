@@ -1,10 +1,12 @@
 package com.amo11k.hotel;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
+import java.io.Serializable;
 
-public class Room {
+public class Room implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int numRoom;
 	private int typeRoom;
 	private boolean smokeRoom;

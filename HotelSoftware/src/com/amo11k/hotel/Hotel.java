@@ -1,6 +1,13 @@
 package com.amo11k.hotel;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
+import javax.swing.JOptionPane;
 
 public class Hotel extends Room implements Serializable {
 	/**
@@ -12,7 +19,6 @@ public class Hotel extends Room implements Serializable {
 	private static Room[] listRoom = new Room[NUM_ROOMS];
 	
 	public static Hotel hotel;
-	
 
 
 	public Hotel() {
