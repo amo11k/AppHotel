@@ -53,7 +53,6 @@ public class Reserva extends JFrame {
 	 * Create the frame.
 	 */
 	public Reserva() {
-		hotel = new Hotel();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				Reserva.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,9 +95,9 @@ public class Reserva extends JFrame {
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					room = asignarRoom(hotel);
+					room = asignarRoom(AppHotel.hotel);
 					precio = getPrice();
-					rent(room,precio);
+					rent(room, precio);
 					dispose();
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -141,7 +140,7 @@ public class Reserva extends JFrame {
 		JLabel horaFIn = new JLabel("Hora de fin:");
 		horaFIn.setBounds(39, 187, 138, 15);
 		pane.add(horaFIn);
-		
+
 		fumadorCheck = new JCheckBox("Fumador");
 		fumadorCheck.setBackground(new Color(255, 153, 102));
 		fumadorCheck.setBounds(261, 232, 129, 23);
@@ -152,9 +151,10 @@ public class Reserva extends JFrame {
 		Date hoy = new Date();
 		date = dateChooser.getDate();
 		if (date.before(hoy)) {
-			JOptionPane.showMessageDialog(null, "La fecha introducida no es correcta");
+			JOptionPane.showMessageDialog(null,
+					"La fecha introducida no es correcta");
 		} else {
-			write(room,precio);
+			write(room, precio);
 			Dialog confim = new Dialog();
 			confim.setVisible(true);
 			confim.setLocationRelativeTo(null);
@@ -164,19 +164,24 @@ public class Reserva extends JFrame {
 	private Room asignarRoom(Hotel h) {
 		Room r = null;
 		Room asig = null;
+		boolean done=false;
 		int type = comboBox.getSelectedIndex();
 		boolean fuma = fumadorCheck.isSelected();
-		while (asig==null){
+		while (asig == null) {
 			for (int i = 0; i < NUM_ROOMS; i++) {
 				r = Hotel.getRoomAt(i);
-				if ((r.getTypeInt() == type) && (r.getDisponible() == true) && (r.getSmokeBoolean() == fuma)){
+				if ((r.getTypeInt() == type) && (r.getDisponible() == true)
+						&& (r.getSmokeBoolean() == fuma) && (!done)) {
 					asig = r;
 					asig.setDisponible(false);
+					done=true;
 				}
 			}
-		}if (asig == null)
-			JOptionPane.showMessageDialog(null, "No quedan habitaciones libres con estos criterios");
-			
+		}
+		if (asig == null)
+			JOptionPane.showMessageDialog(null,
+					"No quedan habitaciones libres con estos criterios");
+
 		return asig;
 	}
 

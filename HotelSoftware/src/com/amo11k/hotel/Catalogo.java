@@ -65,11 +65,9 @@ public class Catalogo extends JFrame {
 		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int cont=0;
 				int posY = texto.getLocation().y;
 				int posX = texto.getLocation().x;
 				texto.setLocation(posX, posY+1);
-				cont++;
 				if (posY>600){
 					dispose();
 					timer.stop();

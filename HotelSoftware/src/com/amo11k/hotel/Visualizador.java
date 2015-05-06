@@ -100,7 +100,7 @@ public class Visualizador extends JFrame {
 				 
 				 builder = new StringBuilder();
 				 for (int i = 0; i<Hotel.NUM_ROOMS;i++){
-					 builder.append(Reserva.hotel.getRoomAt(i).toString()+"\n");
+					 builder.append(AppHotel.hotel.getRoomAt(i).toString()+"\n");
 				 }
 				 txtVisu.setText(builder.toString());
 			}
