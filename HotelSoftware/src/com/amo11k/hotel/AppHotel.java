@@ -37,7 +37,8 @@ public class AppHotel extends JFrame {
 	ObjectInputStream in;
 
 	/**
-	 * Launch the application.
+	 * @author amo11k
+	 * Este main inicia la aplicación.
 	 */
 	public static void main(String[] args) {
 
@@ -56,19 +57,19 @@ public class AppHotel extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create main the frame with their buttons.
 	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 */
 	public AppHotel() {
-		/*if ("fichero.bin" != null) {
+		if ("hotel.bin" != null) {
 			try {
 				hotel = readHotel();
 			} catch (ClassNotFoundException | IOException e1) {
 				JOptionPane.showMessageDialog(null, "Error al cargar");
 			}
-		}*/
+		}
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				AppHotel.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setForeground(Color.RED);
@@ -199,28 +200,34 @@ public class AppHotel extends JFrame {
 		ttlPane.setBounds(0, -36, 854, 633);
 		pane.add(ttlPane);
 	}
-
+	
+	/**
+	 * A method to write a serializable object Hotel.
+	 * 
+	 * @throws IOException
+	 * @param hotel Recieve a Hotel parameter 
+	 */
 	protected void writeHotel(Hotel hotel) throws IOException {
-		for (int i = 0; i < 40; i++) {
-
-			System.out.println(hotel.getRoomAt(i));
-		}
 		fos = new FileOutputStream("hotel.bin");
 		out = new ObjectOutputStream(fos);
 		// Escribir el objeto en el fichero
 		out.writeObject(hotel);
 	}
-
+	
+	/**
+	 * A method to read a serializable object Hotel
+	 *
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * 
+	 * @return return a variable type Hotel.
+	 */
 	private Hotel readHotel() throws IOException, ClassNotFoundException {
 		fis = new FileInputStream("hotel.bin");
 		in = new ObjectInputStream(fis);
 		// Leer el objeto en el fichero
 		hotel=(Hotel) in.readObject();
 		JOptionPane.showMessageDialog(null, "Hotel cargado correctamente");
-		for (int i = 0; i < 40; i++) {
-
-			System.out.println(hotel.getRoomAt(i));
-		}
 		return hotel;
 	}
 }

@@ -26,7 +26,8 @@ public class Catalogo extends JFrame {
 	private JTextPane texto;
 
 	/**
-	 * Create the frame.
+	 * @author amo11k
+	 * 
 	 */
 	public Catalogo() {
 		setResizable(false);
@@ -59,7 +60,10 @@ public class Catalogo extends JFrame {
 		
 		
 	}
-	
+	/**
+	 * A method with a timer that autoclose when message disappear.
+	 * 
+	 */
 	public void init(){
 		timer = new Timer(20, new ActionListener() {
 		
