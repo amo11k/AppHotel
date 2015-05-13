@@ -181,6 +181,13 @@ public class AppHotel extends JFrame {
 		menuBar.add(mnAbout);
 
 		JMenuItem mntmAmokHotel = new JMenuItem("Amo11k Hotel");
+		mntmAmokHotel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				About a = new About();
+				a.setVisible(true);
+				a.setLocationRelativeTo(null);
+			}
+		});
 		mnAbout.add(mntmAmokHotel);
 
 		JLabel ttlPane = new JLabel("Hotel SHHH");
