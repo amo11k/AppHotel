@@ -16,20 +16,20 @@ public class Hotel extends Room implements Serializable {
 	private static final long serialVersionUID = -4788212720797370761L;
 	protected final static int NUM_ROOMS = 40;
 	private int count = 1;
-	private static Room[] listRoom = new Room[NUM_ROOMS];
+	private Room[] listRoom = new Room[NUM_ROOMS];
 	
-	public static Hotel hotel;
+	//public static Hotel hotel;
 
 
 	public Hotel() {
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < NUM_ROOMS; i++) {
 			int random = (int) (Math.random() * 3);
 			listRoom[i] = (new Room(count, random));
 			count++;
 		}
 	}
 
-	public static Room getRoomAt(int numRoom) {
+	public Room getRoomAt(int numRoom) {
 		Room r = listRoom[numRoom];
 		return r;
 
@@ -39,13 +39,4 @@ public class Hotel extends Room implements Serializable {
 		return listRoom[numRoom].getDisponible();
 	}
 	
-
-	public static void main(String[] args) {
-		Hotel hab = new Hotel();
-
-		for (int i = 0; i < 40; i++) {
-
-			System.out.println(hab.getRoomAt(i));
-		}
-	}
 }

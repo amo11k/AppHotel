@@ -34,7 +34,7 @@ public class Visualizador extends JFrame {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Visualizador.class.getResource("/com/amo11k/hotel/img/27938.png")));
 		setTitle("Historial de Reservas");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 550);
 		pane = new JPanel();
 		pane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -130,7 +130,7 @@ public class AppHotel extends JFrame {
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				System.exit(1);
 
 			}
 		});

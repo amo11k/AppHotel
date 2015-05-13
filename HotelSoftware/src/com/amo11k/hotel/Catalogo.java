@@ -32,7 +32,7 @@ public class Catalogo extends JFrame {
 		setResizable(false);
 		setTitle("Catálogo de Tarifas");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Catalogo.class.getResource("/com/amo11k/hotel/img/27938.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

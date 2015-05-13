@@ -55,7 +55,7 @@ public class Reserva extends JFrame {
 	public Reserva() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				Reserva.class.getResource("/com/amo11k/hotel/img/27938.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Realizar reserva");
 		setBounds(100, 100, 450, 406);
 		pane = new JPanel();
@@ -164,17 +164,17 @@ public class Reserva extends JFrame {
 	private Room asignarRoom(Hotel h) {
 		Room r = null;
 		Room asig = null;
-		boolean done=false;
+		boolean done = false;
 		int type = comboBox.getSelectedIndex();
 		boolean fuma = fumadorCheck.isSelected();
 		while (asig == null) {
 			for (int i = 0; i < NUM_ROOMS; i++) {
-				r = Hotel.getRoomAt(i);
+				r = h.getRoomAt(i);
 				if ((r.getTypeInt() == type) && (r.getDisponible() == true)
 						&& (r.getSmokeBoolean() == fuma) && (!done)) {
 					asig = r;
 					asig.setDisponible(false);
-					done=true;
+					done = true;
 				}
 			}
 		}
