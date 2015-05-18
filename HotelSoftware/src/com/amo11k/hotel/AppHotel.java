@@ -25,6 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
+
 public class AppHotel extends JFrame {
 
 	private JPanel pane;
@@ -37,6 +39,14 @@ public class AppHotel extends JFrame {
 	ObjectInputStream in;
 
 	/**
+	 * @AppHotel
+	 * Programa para la gestion de hoteles. 
+	 * El programa servirá para realizar reservas en un hotel, adjudicar habitaciones según la necesidad de los clientes y poder visualizar todas estas reservas. Además se creará un historial con todas las reservas y datos hechas en el hotel.
+	 * Funciones:
+	 * 		·Reservar habitación: El programa deberá dar al cliente a elegir la fecha, la hora, el tipo de habitación, si es fumador/nofumador y si necesitará catering o no.
+	 *		·Asignación de habitaciones: El programa debera asignar una habitación al cliente en función de las características de la reserva.
+	 *		·Visualización de reservas: El programa deberá tener una ventana en la que poder ver el historial de pedidos. Se implementarán herramientas de búsqueda o filtro para trabajar con dicho historial. 
+	 * 
 	 * @author amo11k
 	 * Este main inicia la aplicación.
 	 */
@@ -202,7 +212,7 @@ public class AppHotel extends JFrame {
 	}
 	
 	/**
-	 * A method to write a serializable object Hotel.
+	 * A method to write a serializable object Hotel in a .bin archive
 	 * 
 	 * @throws IOException
 	 * @param hotel Recieve a Hotel parameter 
@@ -215,7 +225,7 @@ public class AppHotel extends JFrame {
 	}
 	
 	/**
-	 * A method to read a serializable object Hotel
+	 * A method to read a serializable object Hotel from a .bin archive
 	 *
 	 * @throws IOException
 	 * @throws ClassNotFoundException

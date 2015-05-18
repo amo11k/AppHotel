@@ -2,7 +2,7 @@ package com.amo11k.hotel;
 
 import java.io.Serializable;
 
-public class Room implements Serializable{
+public class Room implements Serializable {
 	/**
 	 * 
 	 */
@@ -16,6 +16,14 @@ public class Room implements Serializable{
 
 	}
 
+	/**
+	 * Room class constructor. Needs two arguments.
+	 * 
+	 * @param num
+	 *            will be the number of the room.
+	 * @param type
+	 *            will be type of the room.
+	 */
 	public Room(int num, int type) {
 		disponible = true;
 		numRoom = num;
@@ -26,10 +34,13 @@ public class Room implements Serializable{
 			smokeRoom = false;
 	}
 
-	public int getNumRoom() {
-		return numRoom;
-	}
-
+	/**
+	 * That method returns the type of the room as a String.
+	 * 
+	 * @param i
+	 *            will be a integer corresponding with typeRoom
+	 * @return a typeRoom as String
+	 */
 	public String getType(int i) {
 		String kindRoom = "NOVA";
 		switch (i) {
@@ -45,12 +56,19 @@ public class Room implements Serializable{
 		}
 		return kindRoom;
 	}
-	
 
+	/**
+	 * 
+	 * @return That method returns a integer typeRoom
+	 */
 	public int getTypeInt() {
 		return typeRoom;
 	}
 
+	/**
+	 * 
+	 * @return that method returns a String if the room is able or not to smoke.
+	 */
 	public String getSmoke() {
 		String s;
 		if (smokeRoom) {
@@ -61,30 +79,36 @@ public class Room implements Serializable{
 		return s;
 	}
 
+	/**
+	 * 
+	 * @returnIf it's true the room is able to smoke, if it's false is not able.
+	 */
 	public boolean getSmokeBoolean() {
 		return smokeRoom;
-
 	}
-
+	
+	/**
+	 * 
+	 * @return a boolean. True if the room is able, false if not.
+	 */
 	public boolean getDisponible() {
 		return disponible;
 	}
-
+	
+	/**
+	 * This method set the Room's attribute "disponible".
+	 * @param disp
+	 */
 	public void setDisponible(boolean disp) {
 		disponible = disp;
 	}
 
+	/**
+	 * just a toString() method -de toda la vida- for Romm class.
+	 * @return a String
+	 */
 	public String toString() {
-		return "Nº" + numRoom + ";T" + getType(getTypeInt()) + ";F:" + getSmoke() +";D:"+getDisponible();
+		return "Nº" + numRoom + ";T" + getType(getTypeInt()) + ";F:"
+				+ getSmoke() + ";D:" + getDisponible();
 	}
-
-	/*public static void main(String[] args) {
-		Room hab = new Room(1, 2);
-		System.out.println(hab.toString() + hab.getDisponible());
-
-		for (int i = 0; i < 40; i++) {
-
-			System.out.println();
-		}
-	}*/
 }

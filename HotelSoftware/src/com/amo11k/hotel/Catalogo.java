@@ -27,7 +27,7 @@ public class Catalogo extends JFrame {
 
 	/**
 	 * @author amo11k
-	 * 
+	 * Constructor de la clase Catalogo.
 	 */
 	public Catalogo() {
 		setResizable(false);
@@ -61,7 +61,7 @@ public class Catalogo extends JFrame {
 		
 	}
 	/**
-	 * A method with a timer that autoclose when message disappear.
+	 * A method with a timer that autoclose the frame when message disappear.
 	 * 
 	 */
 	public void init(){
