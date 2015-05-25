@@ -15,11 +15,15 @@ public class HotelTest {
 	
 	@Test
 	public void testGetRoomAt() {
-		//assertEquals(h.getRoomAt(0), Room);
+		Hotel h = new Hotel();
+		h.getRoomAt(0);
+		assertEquals(h.getRoomAt(0).getClass(), Room.class);
 	}
 
 	@Test
 	public void testGetDisponibleInt(){
+		Hotel h = new Hotel();
+		assertEquals(h.getDisponible(0), Boolean.TRUE);
 	}
 
 }

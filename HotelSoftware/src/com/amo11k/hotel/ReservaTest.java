@@ -6,10 +6,6 @@ import org.junit.Test;
 
 public class ReservaTest {
 
-	@Test
-	public void testReserva() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testRent() {

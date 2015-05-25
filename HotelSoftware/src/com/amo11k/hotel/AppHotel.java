@@ -40,6 +40,7 @@ public class AppHotel extends JFrame {
 
 	/**
 	 * @AppHotel
+	 * @
 	 * Programa para la gestion de hoteles. 
 	 * El programa servirá para realizar reservas en un hotel, adjudicar habitaciones según la necesidad de los clientes y poder visualizar todas estas reservas. Además se creará un historial con todas las reservas y datos hechas en el hotel.
 	 * Funciones:

@@ -23,7 +23,11 @@ public class RoomTest {
 
 	@Test
 	public void testGetTypeInt() {
-		fail("Not yet implemented");
+		Room r = new Room();
+		assertEquals(r.getTypeInt(), Integer.MIN_VALUE);
+		assertEquals(r.getTypeInt(), "1");
+		assertEquals(r.getTypeInt(), "2");
+		
 	}
 
 	@Test
@@ -41,10 +45,6 @@ public class RoomTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testSetDisponible() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testToString() {
