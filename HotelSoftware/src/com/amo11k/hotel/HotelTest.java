@@ -2,23 +2,24 @@ package com.amo11k.hotel;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class HotelTest {
-
-	@Test
-	public void testHotel() {
-		fail("Not yet implemented");
+	
+	@Before
+	public void setup(){
+		Hotel h = new Hotel();
 	}
-
+	
+	
 	@Test
 	public void testGetRoomAt() {
-		fail("Not yet implemented");
+		//assertEquals(h.getRoomAt(0), Room);
 	}
 
 	@Test
-	public void testGetDisponibleInt() {
-		fail("Not yet implemented");
+	public void testGetDisponibleInt(){
 	}
 
 }
